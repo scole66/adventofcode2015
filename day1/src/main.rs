@@ -26,7 +26,7 @@ fn part2(lines: &[String]) -> Option<i32> {
             }
         }
     }
-    return None;
+    None
 }
 
 fn run_app() -> io::Result<()> {
