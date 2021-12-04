@@ -37,20 +37,13 @@ impl TryFrom<&String> for ElfBox {
             static ref ELFBOX_RE: Regex =
                 Regex::new(r"^(?P<width>[0-9]+)x(?P<height>[0-9]+)x(?P<depth>[0-9]+)\s*$").unwrap();
         }
-        ELFBOX_RE
-            .captures(src)
-            .map_or(Err("Malformed box dimensions"), |caps| {
-                Ok(ElfBox {
-                    width: caps.name("width").unwrap().as_str().parse::<u32>().unwrap(),
-                    height: caps
-                        .name("height")
-                        .unwrap()
-                        .as_str()
-                        .parse::<u32>()
-                        .unwrap(),
-                    depth: caps.name("depth").unwrap().as_str().parse::<u32>().unwrap(),
-                })
+        ELFBOX_RE.captures(src).map_or(Err("Malformed box dimensions"), |caps| {
+            Ok(ElfBox {
+                width: caps.name("width").unwrap().as_str().parse::<u32>().unwrap(),
+                height: caps.name("height").unwrap().as_str().parse::<u32>().unwrap(),
+                depth: caps.name("depth").unwrap().as_str().parse::<u32>().unwrap(),
             })
+        })
     }
 }
 
