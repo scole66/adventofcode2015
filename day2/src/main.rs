@@ -67,7 +67,10 @@ fn run_app() -> io::Result<()> {
         lines.push(buffer.trim().to_string());
     }
 
-    let boxes = lines.iter().filter_map(|line| ElfBox::try_from(line).ok()).collect::<Vec<ElfBox>>();
+    let boxes = lines
+        .iter()
+        .filter_map(|line| ElfBox::try_from(line).ok())
+        .collect::<Vec<ElfBox>>();
 
     println!("Wrapping Paper Needed: {} sq. ft.", part1(&boxes));
     println!("Ribbon Needed: {} ft.", part2(&boxes));
