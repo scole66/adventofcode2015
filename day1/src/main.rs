@@ -44,10 +44,7 @@ fn run_app() -> io::Result<()> {
     let part1_result = part1(&lines);
     println!("Part 1: Santa ends up on floor {}.", part1_result);
     let part2_result = part2(&lines);
-    println!(
-        "Part 2: Santa enters the basement at step {:?}.",
-        part2_result
-    );
+    println!("Part 2: Santa enters the basement at step {:?}.", part2_result);
 
     Ok(())
 }
